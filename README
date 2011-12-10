@@ -1,0 +1,83 @@
+This repository is just a placeholder to backup my experimentations on my Addex
+Weather USB station (vendorId:0x04f3, productId:0x0001).
+
+
+Whole story
+--------------
+
+For my 27th birthday, I was offered by my sister a "weather station", that has
+to be linked to a computer using a usb port. Just great, instead that no
+manual, nor driver were provided.
+
+The only tip I got was a sticker on the screen, with "please download the
+manual and driver at ftp://[random IPv4]/" (not joking).
+
+Obviously, there was only a setup.exe on the FTP, so I had to dig in by myself
+if I wanted to be able to do something with the device on my sheevaplug
+ARM-based linux.
+
+This is still a Work-In-Progress state, but you can find in this repository
+some materials of my current efforts to be able to "discuss" with it.
+
+
+State of the art
+-------------------
+
+The piece of software provided in the previous FTP site is simple:
+
+- A Windows driver
+
+- A "userspace" interface, that queries MSN weather service, gets the XML, and
+  sends it to the device
+
+
+After having snooped a bit the communication between Windows and the device,
+nothing is really complicated. The driver just sends a 27byte-long URB to the
+weather station, that updates its screen with the informations sent.
+
+Requirements
+----------------
+
+You will need python-usb module (not the debian sid package which is outdated,
+make sure to remove it before trying to use the python script). It can be
+installed with:
+
+$ sudo easy_install pyusb
+
+You may need to be root, or configure udev correctly, in order to launch the
+python script provided.
+
+Some explanations on the files
+-----------------------------------
+
+- msn-fetch is a directory containing some sample scripts that gets the XML
+  supposedly parsed by the userspace software. It contacts the microsoft
+  servers in order to get infos of the weather that should be provided to the
+  device afterwards. Chambery and Paris are 2 towns in France, where I live.
+
+- python-sample contains a python script that tries to send a URB request, in
+  order to update the weather station.
+
+- reverse-engineering-materials contains some random notes of my own, trying to
+  understand what was going on into the USB packets sent to the device. Sorry,
+  it's in french, but "nuage" means "cloudy", "soleil" means "sunny", "orage"
+  means "stormy" (?) ... I did not figure out yet the whole protocol anyway.
+  There is also a dump (cap file) of the communication between Windows and the
+  weather station during an update.
+
+
+TODO
+------
+
+A GUI which looks like the one provided by the vendor ? A linux kernel driver ?
+Who knows ...
+
+And ?
+--------- 
+
+Since the station can print on its screen some nice icons related to the
+weather, why not using it to monitor a continuous integration platform ... Just
+some random ideas ...
+
+
+

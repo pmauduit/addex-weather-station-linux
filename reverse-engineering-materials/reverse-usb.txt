@@ -1,0 +1,637 @@
+      00 01 02 03 04 05 06 07  08 09 0A 0B 0C 0D 0E 0F
+
+0040  a8 0b 0c 06 02 14 1c 1f  05 09 5d 06 04 0b 08 04   ........ ..].....
+0050  0b 07 81 1e 09 03 1c 09  01 1e ff
+
+
+0040  a8 0b 0c 06 02 14 1c 25  05 09 5d 06 04 0b 08 04   .......% ..].....
+0050  0b 07 81 1e 09 03 1c 09  01 1e ff                  ........ ...     
+
+0x14 = 20
+0x1C = 28
+
+0x0C = 12 (mois en cours ?)
+
+
+Les paquets précédents ont été émis à 20h28 ...
+
+offset 00: ? semble correspondre à l'échelle (degrés / farenheit) des
+           températures (0xa8: degrés, 0x??: farenheit)
+offset 01: année
+offset 02: mois
+offset 03: jour
+offset 04: jour semaine (0: dimanche ... 6:samedi)
+offset 05: heure
+offset 06: minute
+offset 07: secondes
+offset 08: Température extérieure actuelle 
+offset 09: Icone temps actuel #1 (cf ci-dessous)
+offset 0A: humidité actuelle (en %)
+offset 0B: température max actuelle (touche up)
+offset 0C: température min actuelle (touche up)
+offset 0D: Icone temps actuel #2 (?)
+offset 0E: température max petit cadre 1
+offset 0F: température min petit cadre 1
+offset 10: Icone temps petit cadre 1
+offset 11: température max petit cadre 2
+offset 12: température min petit cadre 2
+offset 13: Icone temps petit cadre 2
+offset 14: température max petit cadre 3
+offset 15: température min petit cadre 3
+offset 16: Icone temps petit cadre 3
+offset 17: température max petit cadre 4
+offset 18: température min petit cadre 4
+offset 19: Icone temps petit cadre 4
+offset 1A: ? ff 
+
+Icones temps
+
+L'icone temps du cadre principal (météo actuelle) semble controllée à la fois par la valeur de l'offset 09, et celle de l'offset 0D.
+
+
+
+nb: bing / msn weather envoie un skycodeday et un skytextday dans le XML. Le code est un entier, et la décompilation du driver et de l'application userspace windows fournie ne semble pas redéfinir des enums permettant de passer de la description à un quelconque entier des offsets 09, 10, 13
+
+05: "couvert / pluie / neige"
+06: "couvert pluie neige grand nuage"
+
+09: "pluvieux"
+
+0b: pluvieux fort
+0c: pluvieux tres fort
+
+0d: "flocons"
+0e: fort flocons
+
+11: horageux
+12: mélange 
+
+13: nuage noir
+
+14: nuage x 3
+
+17: nuage
+
+1b: nuage x3 + lune
+
+1d: ?
+
+1e: nuage + soleil
+
+1f: lune tout court
+
+00: nuage noir + éclairs + pluie + foudre clignotante
+01: nuage noir (clignotant) + foudre clignotante + pluie + éclairs
+02: mme chose
+03: nuage noir fixe + foudre clignotante + eclairs + pluie
+04: meme chose
+05: nuage blanc + pluie + flocons
+06: meme chose
+07: meme chose
+08: meme chose
+09: nuage + pluie
+0a: meme chose
+0b: meme chose
+0c: meme chose
+0d: nuage + flocons
+0e: nuage + flocons (rapide)
+0f: nuage + flocons (slow)
+
+10: nuage + flocons
+11: nuage noir + pluie + eclairs
+12: nuage + pluie + flocons
+13: nuage noir
+14: nuage blanc + 2 nuages
+15: nuage noir fixe
+16: meme chose
+17: nuage + 2 nuages
+18: nuage + 2 nuages
+19: nuage + 2 nuages
+1a: nuage + 2 nuages
+1b: nuage + 2 nuages + lune
+1c: nuage + 2 nuages + soleil
+1d: nuage + lune
+1e: nuage + soleil
+1f: lune
+
+20: soleil
+21: lune + 2 nuages
+22: soleil + 2 nuages
+23: nuage noir + pluie + éclairs
+24: soleil
+25: soleil + nuage blanc + éclairs
+26: soleil + nuage blanc + éclairs + pluie
+28: nuage noir + pluie
+29: nuage blanc + soleil + flocons
+2a: nuage blanc + flocons
+2b: grand nuage blanc + flocons
+2c: nuage noir + éclairs + pluie 
+2d: grand nuage blanc + lune + pluie
+2e: grand nuage blanc + lune + flocons
+2f: petit nuage noir + pluie + éclairs
+
+30: rien
+31: rien
+32: rien
+33: rien
+34: rien
+35: rien
+36: rien
+37: rien
+38: rien
+39: rien
+3A: rien
+3b: rien
+3c: rien
+3d: rien
+3e: rien
+3f: rien
+
+40: soleil + pluie + flocons (pas de nuage)
+41: 2 nuages + lune
+42: 1 nuage noir + 2 nuages blancs
+43: nuage blanc/noir clignotant + flocons
+44: rien
+45: nuage noir + 2 nuages blancs
+46: nuage noir + 2 nuages blancs
+47: soleil + pluie + flocons
+48: 3 nuages + lune
+49: rien
+4a: rien
+4b: rien
+4c: rien
+4d: rien
+4e: rien
+4f: rien
+
+50: rien
+51: nuage blanc/noir clignotant + pluie + lune
+52: nuage noir clignotant + neige + lune
+53: rien
+54: nuage blanc/noir clignotant + pluie + flocons + lune
+55: rien
+56: rien
+57: rien
+58: nuage noir clignotant + éclairs
+59: rien
+5a: rien
+5b: rien
+5c: rien
+5d: rien
+5e: rien
+5f: rien
+
+60: rien
+61: nuage noir + 2 nuages blancs
+62: nuage noir + flocons
+63: nuage noir + éclairs
+64: nuage noir + pluie
+65: nuage noir + pluie + flocons
+66: nuage noir + éclairs
+67: nuage noir + éclairs
+68: rien
+69: nuage blanc + eclairs
+6a: nuage blanc + soleil + flocons
+6b: 2 nuages + lune
+6c: lune + éclairs
+6d: nuage noir
+6e: nuage noir + éclairs
+6f: nuage noir + flocons
+
+70:
+71:
+72: nuage noir + éclairs + pluie
+73: nuage noir + pluie
+74: nuage blanc + éclairs
+75: nuage clignotant + éclairs + pluie
+76: nuage clignotant + pluie
+77: nuage clignotant + 2nuages
+78: nuage clignotant + éclairs + pluie
+79: mme chose
+7a: rien
+7b: rien
+7c: rien
+7d: rien
+7e: rien
+7f: rien
+
+80: nuage noir + 2 nuages
+81: nuage noir + 2 nuages
+82: nuage noir + 2 nuages
+83: nuage noir + pluie + éclairs
+84: nuage clignotant + éclairs + soleil
+85: nuage clignotant + éclairs + pluie + lune
+86: nuage clignotant + pluie + éclairs + soleil
+87: rien
+88: rien
+89: rien
+8a: rien
+8b: rien
+8c: rien
+8d: rien
+8e: rien
+8f: rien
+
+90: nuage + flocons + lune
+91: nuage noir + 2 nuages
+92: nuage clignotant + 2 nuages + lune
+93: nuage noir clignotant + 2 nuages
+94: nuage + clignotement foudre + éclairs + lune
+95: nuage noir + 2 nuages
+96: nuage clignotant + 2 nuages clignotant + lune
+97: nuage noir clignotant + 2 nuages
+98: nuage noir + 2 nuages clignotant
+99: nuage noir + 2 nuages clignotant
+9a: nuage clignotant + soleil + 2 nuages
+9b: nuage noir clignotant + foudre clignotante + eclairs
+9c: lune + 2 nuages
+9d: nuage noir + 2 nuags clignotants
+9e: nuage noir clignotant + lune + 2 nuages clignotants
+9f: nuage noir clignotant + foudre clignotante + éclairs
+
+a0: nuage + lune + 2 nuages clignotant
+a1: nuage noir + foudre clignotante
+a2: nuage clignotant + lune + foudre
+a3: nuage noir clignotant + lune + foudre
+a4: nuage noir + 2 nuages
+a5: nuage noir + foudre
+a6: nuage noir + flocons
+a7: nuage noir clignotant + 2 nuages
+a8: nuage noir fixe + foudre clignotante + éclairs
+a9: nuage noir + foudre clignotante + éclairs
+aa: meme chose
+ab: nuage clignotant noir (contour fixe) + 2 nuages
+ac: rien
+ad: rien
+ae: rien
+af: rien
+
+b0: nuage noir clignotant + foudre clignotante + pluie + éclairs
+b1: pluie + éclairs (pas icone nuage)
+b2: nuage noir clignotant + foudre clignotante + éclairs
+b3: nuage noir clignotant + foudre clignotante + éclairs
+b4:
+b5: nuage noir ° pluie
+b6: nuage noir + pluie + flocons
+b7: nuage noir + éclairs + pluie
+b8: nuage noir + pluie + éclair
+b9: nuage noir clignotant + pluie + éclairs
+ba: rien
+bb: nuage noir clignotant 1s + pluie + éclairs + lune
+bc: nuage blanc + lune
+bd: soleil + flocons
+be: nuage blanc + flocons + lune
+bf: flocons
+
+c0: pluie + flocons
+c1: foudre
+c2: 2 nuages
+c3: pluie + flocons
+c4: foudre
+c5: pluie + foudre
+c6: 2 nuages
+c7: pluie + foudre
+c8: foudre
+c9: 2 nuages
+ca: 2 nuages
+cb: 2 nuages
+cc: 2 nuages
+cd: 2 nuages
+ce: 2 nuages
+cf: 2 nuages
+
+d0: 2 nuages
+d1: foudre
+d2: 2 nuages
+d3: pluie + foudre
+d4: foudre
+d5: pluie + foudre
+d6: pluie + foudre
+d7: foudre
+d8: nuage blanc + foudre
+d9: nuage blanc
+da: nuage blanc + pluie
+db: nuage blanc + foudre clignotante + foudre
+dc: nuage blanc + pluie + flocons
+dd: nuage blanc + foudre
+de: 
+df: nuage blanc + 2 nuages
+
+e0: nuage blanc + 2 nuages
+e1: nuage blanc + 2 nuages
+e2: "
+e3: nuage blanc + pluie + foudre
+e4: pareil
+e5: pareil + foudre cligno
+e6: soleil + foudre
+e7: soleil + pluie + flocons
+e8: soleil + foudre + pluie
+e9: "
+ea: soleil + 2 nuages
+eb soleil + éclairs
+ec: soleil + nuage
+ed: soleil + pluie + nuage
+ee: soleil + nuage + foudre + pluie
+ef: soleil + nuage + pluie + foudre clignotante + foudre
+
+f0: soleil + éclairs + nuage
+f1: soleil + foudre clignotante + foudre + pluie
+f2: lune + pluie + flocons
+f3: lune + 2 nuages
+f4: lune + éclairs
+f5: lune + nuage + éclairs
+f6: lune + éclairs + foudre cligno
+f7: pluie foudre cligno + lune + nuage
+f8: nuage lune éclairs
+f9: éclairs lune
+fa: éclairs lune pluie
+fb: lune nuage 2 nuages
+fc: lune nuage 2 nuages
+fd: nuage noir
+fe: nuage noir + pluie + éclairs
+
+
+
+icones temps secondaires :
+
+0 nuage pluie orage
+1
+2
+3
+4
+5 nuage pluie flocons
+6
+7
+8
+
+9 nuage pluie
+a
+b
+c
+d nuage flocons
+e
+f
+
+10 nuage flocons
+11 nuage pluie orage
+12 nuage pluie flocons
+13 nuage
+14
+15
+16
+17
+18
+19
+1a
+1b
+1c nuage soleil
+1d nuage
+1e nuage soleil
+1f rien
+
+20 soleil
+21 nuage
+22 nuage soleil
+23 nuage pluie orage
+24 soleil
+25 nuage soleil orage
+26 nuage soleil orage
+27 nuage soleil pluie
+28 nuage pluie
+29 nuage soleil flocons
+2a nuage flocons
+2b nuage flocons
+2c rien
+2d nuage pluie
+2e nuage flocons
+2f nuage pluie orage
+
+30 rien
+31
+32
+33
+34
+35
+36
+37
+38
+39
+3a
+3b
+3c
+3d
+3e
+3f
+
+40 soleil pluie flocons
+41 nuage pluie
+42 nuage pluie
+43 nuage flocons
+44 rien
+45 nuage soleil flocons
+46 nuage soleil flocons
+47 nuage
+48 nuage pluie
+49 rien
+4a rien
+4b
+4c
+4d
+4e
+4f
+
+
+50 rien
+51 nuage pluie
+52 soleil flocons
+53 rien
+54 nuage soleil pluie flocons
+55->57 rien
+58 orage
+59->5f rien
+
+60 rien
+61 nuage soleil flocons
+62 soleil flocons
+63 soleil orage
+64 pluie
+65 soleil pluie flocons
+66 soleil flocons orage
+67 soleil flocons orage
+68 rien
+69 nuage flocons orage
+6a nuage soleil flocons
+6b nuage
+6c soleil orage
+6d rien
+6e nuage flocons orage
+6f nuage flocons soleil
+
+70 nuage pluie flocons soleil
+71 nuage flocons
+72 soleil pluie flocons orage
+73 nuage pluie flocons orage
+74 nuage flocons orage
+75 nuage pluie orage
+76 nuage pluie orage soleil
+77 nuage pluie flocons
+78 nuage pluie flocons soleil orage
+79 nuage pluie flocons orage
+7a rien
+7b
+7c
+7d
+7e
+7f
+
+
+80 nuage flocons soleil
+81 nuage flocons pluie soleil
+82 nuage flocons soleil
+83 nuage pluie soleil orage
+84 nuage flocons orage soleil
+85 nuage pluie flocons soleil orage
+86 nuage pluie flocons soleil orage
+87 rien
+88
+89
+8a
+8b
+8c
+8d
+8e
+8f
+
+
+90 nuage flocons
+91 nuage
+92 nuage soleil
+93 nuage
+94 nuage orage
+95 nuage
+96 nuage
+97 nuage soleil
+98 nuage
+99 nuage soleil
+9a nuage soleil
+9b nuage soleil orage
+9c nuage soleil
+9d nuage soleil
+9e nuage
+9f orage
+
+a0 nuage soleil
+a1 orage
+a2 nuage orage
+a3 soleil orage
+a4 nuage
+a5 nuage orage
+a6 soleil flocons
+a7 nuage
+a8 orage
+a9 nuage orage
+aa soleil orage
+ab nuage soleil
+ac rien
+ad rien
+ae rien
+af rien
+
+b0 nuage soleil pluie orage
+b1 orage pluie
+b2 orage nuage soleil flocons
+b3 nuage pluie flocons orage
+b4 orage pluie flocons
+b5 nuage pluie flocons
+b6 nuage soleil pluie flocons
+b7 orage pluie
+b8 nuage soleil orage pluie flocons
+b9 nuage pluie flocons orage
+ba rien
+bb soleil orage flocons pluie
+bc nuage soleil
+bd soleil flocons
+be nuage soleil flocons
+bf flocons
+
+c0 flocons pluie
+c1 flocons orage
+c2 nuage
+c3 pluie flocons
+c4 flocons orage
+c5 pluie orage
+c6 nuage
+c7 pluie orage flocons
+c8 orage flcons
+c9 nuage
+ca nuage
+cb nuage
+cc nuage pluie
+cd nuage
+ce nuage flocons
+cf nuage pluie
+
+d0 nuage pluie flocons
+d1 nuage orage
+d2 nuage flocons
+d3 nuage pluie orage
+d4 nuage orage
+d5 nuage pluie orage
+d6 nuage pluie flocons orage
+d7 nuage flocons orage
+d8 nuage pluie
+d9 nuage
+da nuage pluie
+db nuage orage
+dc nuage pluie flocons
+dd nuage orage
+de nuage orage pluie
+df nuage
+
+e0 nuage
+e1 nuage pluie
+e2 nuage pluie flocons
+e3 nuage pluie orage
+e4 nuage pluie orage flocons
+e5 nuage pluie orage
+e6 soleil orage
+e7 soleil pluie flocons
+e8 soleil pluie orage
+e9 soleil orage pluie flocons
+ea nuage soleil pluie flocons
+eb nuage soleil orage flocons
+ec nuage soleil
+ed nuage pluie soleil
+ee nuage soleil pluie flocons orage
+ef nuage soleil pluie flocons orage
+
+f0 nuage soleil flocons orage
+f1 nuage soleil flocons pluie orage
+f2 flocons pluie
+f3 nuage pluie
+f4 nuage orage
+f5 nuage orage
+f6 nuage orage flocons
+f7 nuage orage pluie flocons
+f8 nuage flocons orage
+f9 nuage soleil flocons orage
+fa soleil orage pluie flocons
+fb soleil nuage flocons
+fc soleil nuage flocons
+fd nuage
+fe pluie flocons orage
+ff soleil pluie flocons orage
+
+
+
+
+ff: "pluie éclair soleil et nuage" (bug ? déluge apocalyptique ?)
+00: ?
+
+
+test : 00 01 02 03 04 05 06 07  08 09 0A 0B 0C 0D 0E 0F
+
+       a8 0b 0c 0c 01 0c 26 25  01 01 5d 01 01 0b 01 01
+       0b 07 81 1e 01 01 1c 01  01 1e ff
+
+
