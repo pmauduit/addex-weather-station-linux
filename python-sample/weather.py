@@ -40,7 +40,8 @@ current_weather = weather_doc.getElementsByTagName("current")[0]
 forecasts_nodes = weather_doc.getElementsByTagName("forecast")
 
 # outdoor temperature
-sample_conf_pkt[0x08] = int(current_weather.getAttribute("temperature")) % 256
+ctemp = int(current_weather.getAttribute("temperature"))
+sample_conf_pkt[0x08] =  ctemp if ctemp > 0 else 0x80  ^ abs(ctemp)
 # weather icon (current), skycode
 sample_conf_pkt[0x09] = int(current_weather.getAttribute("skycode")) % 256
 # humidity
