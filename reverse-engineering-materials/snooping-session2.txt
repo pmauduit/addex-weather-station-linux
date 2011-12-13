@@ -1,0 +1,52 @@
+XML:
+
+<?xml version="1.0"?>
+<weatherdata>
+  <weather alert="" attribution="Data provided by Foreca" attribution2="© Foreca" degreetype="C" encodedlocationname="Chamb%c3%a9ry%2c+FRA" entityid="8582076" imagerelativeurl="http://blst.msn.com/as/wea3/i/en-us/" lat="45.5751953" long="5.9182067" provider="Foreca" timezone="1" url="http://local.msn.com/worldweather.aspx?eid=8582076&amp;q=Chamb%c3%a9ry-FRA" weatherlocationcode="wc:FRXX0147" weatherlocationname="Chambéry, FRA" zipcode="">
+    <current date="2011-12-13" day="Tuesday" feelslike="4" humidity="76" observationpoint="Chambery / Aix-Les-Bains" observationtime="20:30:00" shortday="Tue" skycode="26" skytext="Cloudy" temperature="8" winddisplay="30 km/hr SSW" windspeed="30"/>
+    <forecast date="2011-12-13" day="Tuesday" high="9" low="6" precip="65" shortday="Tue" skycodeday="39" skytextday="Showers / Clear"/>
+    <forecast date="2011-12-14" day="Wednesday" high="8" low="3" precip="95" shortday="Wed" skycodeday="39" skytextday="Showers / Clear"/>
+    <forecast date="2011-12-15" day="Thursday" high="6" low="5" precip="95" shortday="Thu" skycodeday="11" skytextday="Rain"/>
+    <forecast date="2011-12-16" day="Friday" high="8" low="0" precip="95" shortday="Fri" skycodeday="11" skytextday="Rain"/>
+    <forecast date="2011-12-17" day="Saturday" high="0" low="-1" precip="95" shortday="Sat" skycodeday="41" skytextday="Snow Showers / Sun"/>
+    <toolbar minversion="1.0.1965.0" timewindow="60"/>
+  </weather>
+</weatherdata>
+
+URB:
+
+0040  a8 0b 0c 0d 02 15 03 20  08 1a 4c 09 06 27 08 03   .......  ..L..'..
+0050  27 06 05 0b 08 00 0b 00  81 29 ff                  '....... .).     
+
+different tries:
+
+0040  57 0b 0c 0d 02 15 03 2a  08 1a 4c 09 06 27 08 03   W......* ..L..'..
+0050  27 06 05 0b 08 00 0b 00  81 29 ff                  '....... .).     
+
+0040  57 0b 0c 0d 02 15 03 31  08 1a 4c 09 06 27 08 03   W......1 ..L..'..
+0050  27 06 05 0b 08 00 0b 00  81 29 ff                  '....... .).     
+
+0040  57 0b 0c 0d 02 15 03 39  08 1a 4c 09 06 27 08 03   W......9 ..L..'..
+0050  27 06 05 0b 08 00 0b 00  81 29 ff                  '....... .).     
+
+0040  a8 0b 0c 0d 02 15 06 35  06 1b 51 0b 06 27 07 05   .......5 ..Q..'..
+0050  0b 08 02 27 05 03 27 05  03 27 ff                  ...'..'. .'.     
+
+0040  57 0b 0c 0d 02 15 06 3a  06 1b 51 0b 06 27 07 05   W......: ..Q..'..
+0050  0b 08 02 27 05 03 27 05  03 27 ff                  ...'..'. .'.     
+
+0040  57 0b 0c 0d 02 15 07 02  06 1b 51 0b 06 27 07 05   W....... ..Q..'..
+0050  0b 08 02 27 05 03 27 05  03 27 ff                  ...'..'. .'.     
+
+0040  57 0b 0c 0d 02 15 07 06  06 1b 51 0b 06 27 07 05   W....... ..Q..'..
+0050  0b 08 02 27 05 03 27 05  03 27 ff                  ...'..'. .'.     
+
+0040  a8 0b 0c 0d 02 15 07 0e  08 1b 57 0a 06 0b 08 04   ........ ..W.....
+0050  27 04 03 27 05 00 0b 01  81 29 ff                  '..'.... .).     
+
+0040  57 0b 0c 0d 02 15 07 14  08 1b 57 0a 06 0b 08 04   W....... ..W.....
+0050  27 04 03 27 05 00 0b 01  81 29 ff                  '..'.... .).     
+
+
+
+

@@ -25,11 +25,11 @@ offset 05: heure
 offset 06: minute
 offset 07: secondes
 offset 08: Température extérieure actuelle 
-offset 09: Icone temps actuel #1 (cf ci-dessous)
+offset 09: Icone temps actuel #1 (skycode from current in the XML)
 offset 0A: humidité actuelle (en %)
 offset 0B: température max actuelle (touche up)
 offset 0C: température min actuelle (touche up)
-offset 0D: Icone temps actuel #2 (?)
+offset 0D: Icone temps actuel #2 (skycodeday of first forecast in the XML)
 offset 0E: température max petit cadre 1
 offset 0F: température min petit cadre 1
 offset 10: Icone temps petit cadre 1
