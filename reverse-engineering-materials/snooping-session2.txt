@@ -18,6 +18,19 @@ URB:
 0040  a8 0b 0c 0d 02 15 03 20  08 1a 4c 09 06 27 08 03   .......  ..L..'..
 0050  27 06 05 0b 08 00 0b 00  81 29 ff                  '....... .).     
 
+offset 0x09
+0x1a = 26 (skycode "current")
+
+offset 0x0D
+0x27 = 39 (skycodeday "forecast[0]")
+
+temp max frame #4
+0x00 = 0 -> 0
+
+temp min frame #4
+0x81 =  129 = 10000001   ->  -1
+
+
 different tries:
 
 0040  57 0b 0c 0d 02 15 03 2a  08 1a 4c 09 06 27 08 03   W......* ..L..'..
