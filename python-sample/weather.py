@@ -68,20 +68,20 @@ sample_conf_pkt[0x10] = int(forecasts_nodes[1].getAttribute("skycodeday")) % 256
 
 tmax = int(forecasts_nodes[2].getAttribute("high"))
 tmin = int(forecasts_nodes[2].getAttribute("low"))
-sample_conf_pkt[0x0E] = tmax if tmax > 0 else 0x80 ^ abs(tmax)
-sample_conf_pkt[0x0F] = tmin if tmin > 0 else 0x80 ^ abs(tmin)
+sample_conf_pkt[0x11] = tmax if tmax > 0 else 0x80 ^ abs(tmax)
+sample_conf_pkt[0x12] = tmin if tmin > 0 else 0x80 ^ abs(tmin)
 sample_conf_pkt[0x13] = int(forecasts_nodes[2].getAttribute("skycodeday")) % 256
 
 tmax = int(forecasts_nodes[3].getAttribute("high"))
 tmin = int(forecasts_nodes[3].getAttribute("low"))
-sample_conf_pkt[0x0E] = tmax if tmax > 0 else 0x80 ^ abs(tmax)
-sample_conf_pkt[0x0F] = tmin if tmin > 0 else 0x80 ^ abs(tmin)
+sample_conf_pkt[0x14] = tmax if tmax > 0 else 0x80 ^ abs(tmax)
+sample_conf_pkt[0x15] = tmin if tmin > 0 else 0x80 ^ abs(tmin)
 sample_conf_pkt[0x16] = int(forecasts_nodes[3].getAttribute("skycodeday")) % 256
 
 tmax = int(forecasts_nodes[4].getAttribute("high"))
 tmin = int(forecasts_nodes[4].getAttribute("low"))
-sample_conf_pkt[0x0E] = tmax if tmax > 0 else 0x80 ^ abs(tmax)
-sample_conf_pkt[0x0F] = tmin if tmin > 0 else 0x80 ^ abs(tmin)
+sample_conf_pkt[0x17] = tmax if tmax > 0 else 0x80 ^ abs(tmax)
+sample_conf_pkt[0x18] = tmin if tmin > 0 else 0x80 ^ abs(tmin)
 sample_conf_pkt[0x19] = int(forecasts_nodes[4].getAttribute("skycodeday")) % 256
 
 
