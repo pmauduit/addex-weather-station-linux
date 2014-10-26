@@ -15,14 +15,19 @@ from xml.dom import minidom
 # it will be given as URL parameter to bing weather services
 
 # currently set to Chambéry, France
+# old code
 CODE_LOCATION="wc:FRXX0147"
+# new code
+CODE_LOCATION="Chamb%C3%A9ry,Fr"
 
 # temperature format (C or F)
 TEMP_FMT="C"
 
 # URL to bing weather service
+# old one
 BINGWEATHER_URL= "http://weather.msn.com/data.aspx?wealocations=%s&weadegreetype=%s" % (CODE_LOCATION, TEMP_FMT,)
-
+# new one (as of 2014-10)
+BINGWEATHER_URL = "http://weather.service.msn.com/data.aspx?weadegreetype=%s&culture=en-US&weasearchstr=%s" % (TEMP_FMT, CODE_LOCATION,)
 
 # Our sample packet that would be send via a URB request
 #
@@ -38,6 +43,7 @@ if TEMP_FMT == "F":
 weather_doc = minidom.parse(urllib.urlopen(BINGWEATHER_URL))
 current_weather = weather_doc.getElementsByTagName("current")[0]
 forecasts_nodes = weather_doc.getElementsByTagName("forecast")
+
 
 # outdoor temperature
 ctemp = int(current_weather.getAttribute("temperature"))
