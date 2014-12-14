@@ -27,7 +27,7 @@ TEMP_FMT="C"
 # old one
 BINGWEATHER_URL= "http://weather.msn.com/data.aspx?wealocations=%s&weadegreetype=%s" % (CODE_LOCATION, TEMP_FMT,)
 # new one (as of 2014-10)
-BINGWEATHER_URL = "http://weather.service.msn.com/data.aspx?weadegreetype=%s&culture=en-US&weasearchstr=%s" % (TEMP_FMT, CODE_LOCATION,)
+BINGWEATHER_URL = "http://weather.service.msn.com/data.aspx?weadegreetype=%s&culture=en-US&weasearchstr=%s&src=outlook" % (TEMP_FMT, CODE_LOCATION,)
 
 # Our sample packet that would be send via a URB request
 #
