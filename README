@@ -5,12 +5,12 @@ Weather USB station (vendorId:0x04f3, productId:0x0001).
 Whole story
 --------------
 
-For my 27th birthday, I was offered by my sister a "weather station", that has
+For my 27th birthday, I have been offered by my sister a "weather station", which has
 to be linked to a computer using a usb port. Just great, instead that no
 manual, nor driver were provided.
 
 The only tip I got was a sticker on the screen, with "please download the
-manual and driver at ftp://[random IPv4]/" (not joking).
+manual and driver at ftp://[random IPv4]/" (no jokes).
 
 Obviously, there was only a setup.exe on the FTP, so I had to dig in by myself
 if I wanted to be able to do something with the device on my sheevaplug
