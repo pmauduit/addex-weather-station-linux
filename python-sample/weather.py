@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 
 import usb.core
-import usb.util
+import array
 import sys
 import os
 import time
 import datetime
 
-import urllib
+import urllib.request
 from xml.dom import minidom
 
 # this is the code related to the current location
@@ -40,7 +40,7 @@ if TEMP_FMT == "F":
 
 
 # XML parsing
-weather_doc = minidom.parse(urllib.urlopen(BINGWEATHER_URL))
+weather_doc = minidom.parse(urllib.request.urlopen(BINGWEATHER_URL))
 current_weather = weather_doc.getElementsByTagName("current")[0]
 forecasts_nodes = weather_doc.getElementsByTagName("forecast")
 
@@ -112,6 +112,6 @@ if weather_station is None:
 
 weather_station.set_configuration()
 
-ret = weather_station.ctrl_transfer(0x40, 0x41, 0xfa54, 0, ''.join([chr(x) for x in sample_conf_pkt]))
+ret = weather_station.ctrl_transfer(0x40, 0x41, 0xfa54, 0, array.array('B', sample_conf_pkt))
 
-print "done"
+print("done: {} bytes transferred".format(ret))
