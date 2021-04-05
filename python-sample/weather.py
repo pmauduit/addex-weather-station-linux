@@ -7,9 +7,13 @@ import sys
 import os
 import time
 import datetime
+import pytz
 
 import urllib.request
 from xml.dom import minidom
+
+# sets the user's timezone
+USER_TIMEZONE="Europe/Paris"
 
 # this is the code related to the current location
 # it will be given as URL parameter to bing weather services
@@ -96,15 +100,17 @@ sample_conf_pkt[0x19] = int(forecasts_nodes[4].getAttribute("skycodeday")) % 256
 weather_station = usb.core.find(idVendor=0x04f3, idProduct=0x0001)
 
 
+now = datetime.datetime.now(pytz.timezone(USER_TIMEZONE))
+
 # Setting up time relying on the machine date/time
-sample_conf_pkt[0x01] = datetime.datetime.now().year % 2000
-sample_conf_pkt[0x02] = datetime.datetime.now().month
-sample_conf_pkt[0x03] = datetime.datetime.now().day
+sample_conf_pkt[0x01] = now.year % 2000
+sample_conf_pkt[0x02] = now.month
+sample_conf_pkt[0x03] = now.day
 # weekday returns 0 if monday, the protocol expect 0 to be sunday ...
-sample_conf_pkt[0x04] = (datetime.datetime.now().weekday() + 1) % 7
-sample_conf_pkt[0x05] = datetime.datetime.now().hour
-sample_conf_pkt[0x06] = datetime.datetime.now().minute
-sample_conf_pkt[0x07] = datetime.datetime.now().second
+sample_conf_pkt[0x04] = (now.weekday() + 1) % 7
+sample_conf_pkt[0x05] = now.hour
+sample_conf_pkt[0x06] = now.minute
+sample_conf_pkt[0x07] = now.second
 
 
 if weather_station is None:
